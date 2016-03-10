@@ -16,3 +16,8 @@ fi
 
 cd dotfiles
 ./install.sh ~ 
+
+# Bash profile
+cat > ~/.bash_profile <<EOF
+  alias ll='ls --color -l'
+EOF
