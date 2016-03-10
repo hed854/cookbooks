@@ -21,6 +21,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     config.vm.provision "chef_solo" do |chef|
       chef.cookbooks_path = "../../cookbooks"
+      chef.add_recipe "the_silver_searcher"
       chef.add_recipe "apache2"
       chef.add_recipe "apache2::mod_php5"
       chef.add_recipe "php"
