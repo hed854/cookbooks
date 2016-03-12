@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # get missing public keys before update
-apt-get install -y debian-archive-keyring
-apt-get update -y
+apt-get install -q -y debian-archive-keyring
+apt-get update -q -y
 
-apt-get install -y git vim curl tree htop
+apt-get install -q -y git vim curl tree htop
 
 # Install dotfiles
 cd ~
@@ -16,8 +16,3 @@ fi
 
 cd dotfiles
 ./install.sh ~ 
-
-# Bash profile
-cat > ~/.bash_profile <<EOF
-  alias ll='ls --color -l'
-EOF

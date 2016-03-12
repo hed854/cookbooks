@@ -1,6 +1,7 @@
 #!/bin/bash
 
-apt-get -y install python python-pip python-dev
+export DEBIAN_FRONTEND=noninteractive
+apt-get -q -y install python python-pip python-dev
 pip install pytest
 
 # fabric needs python-dev
