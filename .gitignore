@@ -1,2 +1,4 @@
-.vagrant
 cookbooks/*
+.vagrant
+*.swp
+*.swo
