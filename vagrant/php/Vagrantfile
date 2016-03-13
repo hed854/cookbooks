@@ -23,17 +23,24 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.provision "chef_solo" do |chef|
       chef.cookbooks_path = "../../cookbooks"
       chef.add_recipe "the_silver_searcher"
+      chef.add_recipe "redisio"
+      chef.add_recipe "redisio::enable"
       chef.add_recipe "apache2"
       chef.add_recipe "apache2::mod_php5"
       chef.add_recipe "php"
       chef.add_recipe "composer"
-      #chef.json = {
-      #  "apache" => {
-      #    "version" => "2.4"
-      #  }
-      #}
-    end
+      chef.add_recipe "php-redis"
+      chef.json = {
+        "php" => {
+          "directives" => {
+            :display_errors => 'On',
+            :log_errors => 'On'
+	  }
+        }
+      }
 
+    end
+ 
   end
 
 end
