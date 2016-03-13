@@ -4,7 +4,7 @@
 apt-get install -q -y debian-archive-keyring
 apt-get update -q -y
 
-apt-get install -q -y git vim curl tree htop
+apt-get install -q -y man git vim curl tree htop
 
 # Install dotfiles
 cd ~
