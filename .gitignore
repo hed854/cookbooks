@@ -2,3 +2,4 @@ cookbooks/*
 .vagrant
 *.swp
 *.swo
+shared_data/*
