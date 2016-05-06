@@ -1,0 +1,28 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  config.vm.define :mean do |config|
+    config.vm.box = "ARTACK/debian-jessie"
+    config.vm.hostname = "mean"
+
+    config.vm.network "forwarded_port", guest: 80, host: 8080
+
+    config.vm.network "public_network"
+    config.vm.synced_folder "../../shared_data", "/vagrant_data"
+
+    config.vm.provider "virtualbox" do |vb|
+         vb.customize ["modifyvm", :id, "--memory", "512"]
+	 # disable usb 2.0
+	 vb.customize ["modifyvm", :id, "--usb", "off"]
+         vb.customize ["modifyvm", :id, "--usbehci", "off"]
+    end
+
+    config.vm.provision "shell", :path => "../../scripts/essentials.sh"
+    config.vm.provision "shell", :path => "../../scripts/mean.sh"
+ 
+  end
+
+end
