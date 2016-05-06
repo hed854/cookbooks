@@ -5,7 +5,6 @@ apt-get install -q -y debian-archive-keyring
 
 ## install wheezy backports
 #if ! grep 'backports' /etc/apt/sources.list -q; then
-#   echo "HELLO C HED"
 #   echo "deb http://ftp.us.debian.org/debian wheezy-backports main" >> /etc/apt/sources.list
 #fi
 
@@ -16,7 +15,9 @@ apt-get update -q -y
 apt-get install -q -y man git vim curl tree htop unzip
 
 # on jessie8 only
-apt-get install silversearcher-ag
+if [[ $(cat /etc/debian_version) == '8.1' ]]; then
+   apt-get install silversearcher-ag
+fi
 
 # Install dotfiles
 cd ~
