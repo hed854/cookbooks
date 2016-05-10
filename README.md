@@ -1,6 +1,6 @@
 # Vagrantlab
 
-Vagrantfiles / shell provisioners for dev environments
+Vagrantfiles for dev environments
 
 
 ## Requirements
@@ -9,7 +9,11 @@ Vagrantfiles / shell provisioners for dev environments
 - Virtualbox
 - Git
 
-## Mean box
+## Available VMs
 
-- This box uses [ARTACK/debian-jessie](https://atlas.hashicorp.com/ARTACK/boxes/debian-jessie)
-- Only shell provisioning (no chef installed)
+| Name | Box | Provisioners |
+| --- | --- | --- |
+| mean | [ARTACK/debian-jessie](https://atlas.hashicorp.com/ARTACK/boxes/debian-jessie) | shell |
+| docker | [ARTACK/debian-jessie](https://atlas.hashicorp.com/ARTACK/boxes/debian-jessie) | shell, docker |
+| php | debian wheezy | shell, chef |
+| python | debian wheezy | shell |
