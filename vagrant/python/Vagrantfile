@@ -5,12 +5,13 @@ VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.define :python do |config|
-    config.vm.box = "wheezy64"
+    config.vm.box = "ARTACK/debian-jessie"
 
     #config.vm.network "forwarded_port", guest: 80, host: 8080
 
     config.vm.network "public_network"
     config.vm.synced_folder "../../shared_data", "/vagrant_data"
+    config.vbguest.iso_path = "../VBoxGuestAdditions_5.0.20.iso"
 
     config.vm.provider "virtualbox" do |vb|
          vb.customize ["modifyvm", :id, "--memory", "512"]
