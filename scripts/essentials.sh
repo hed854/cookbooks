@@ -12,7 +12,7 @@ apt-get install -q -y debian-archive-keyring
 apt-get update -q -y
 
 # install essentials
-apt-get install -q -y man git vim curl tree htop unzip
+apt-get install -q -y man git vim curl tree htop unzip pkg-config
 
 # on jessie8 only
 if [[ $(cat /etc/debian_version) == '8.1' ]]; then
