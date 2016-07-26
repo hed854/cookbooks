@@ -12,6 +12,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     config.vm.network "public_network"
     config.vm.synced_folder "../../shared_data", "/vagrant_data"
+    config.vbguest.iso_path = "../VBoxGuestAdditions_5.0.20.iso"
 
     config.vm.provider "virtualbox" do |vb|
          vb.customize ["modifyvm", :id, "--memory", "512"]
@@ -22,6 +23,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     config.vm.provision "shell", :path => "../../scripts/essentials.sh"
     config.vm.provision "shell", :path => "../../scripts/mean.sh"
+    config.vm.provision "shell", :path => "../../scripts/api.sh"
  
   end
 
