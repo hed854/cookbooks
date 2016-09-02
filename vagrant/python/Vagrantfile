@@ -7,7 +7,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.define :python do |config|
     config.vm.box = "ARTACK/debian-jessie"
 
-    #config.vm.network "forwarded_port", guest: 80, host: 8080
+    # mkdocs
+    config.vm.network "forwarded_port", guest: 80, host: 8000
 
     config.vm.network "public_network"
     config.vm.synced_folder "../../shared_data", "/vagrant_data"
@@ -18,6 +19,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
 
     config.vm.provision "shell", :path => "../../scripts/essentials.sh"
+    config.vm.provision "shell", :path => "../../scripts/sdl1.sh"
     config.vm.provision "shell", :path => "../../scripts/python.sh"
   end
 
