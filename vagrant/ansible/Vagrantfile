@@ -1,0 +1,53 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  config.vm.define :ansible do |config|
+    config.vm.box = "ARTACK/debian-jessie"
+    config.vm.hostname = "ansibleclusterfuck"
+
+    config.vm.network "forwarded_port", guest: 80, host: 8080
+
+    config.vm.network "public_network"
+    config.vm.synced_folder "../../shared_data", "/vagrant_data"
+    config.vbguest.iso_path = "../VBoxGuestAdditions_5.0.20.iso"
+
+    config.vm.provider "virtualbox" do |vb|
+         vb.customize ["modifyvm", :id, "--memory", "512"]
+	 # disable usb 2.0
+	 vb.customize ["modifyvm", :id, "--usb", "off"]
+         vb.customize ["modifyvm", :id, "--usbehci", "off"]
+    end
+
+    config.vm.provision "shell", :path => "../../scripts/ansible.sh"
+    #config.vm.provision "shell", :path => "../../scripts/python.sh"
+
+    #config.vm.provision "chef_solo" do |chef|
+    #  chef.cookbooks_path = "../../cookbooks"
+    #  chef.add_recipe "the_silver_searcher"
+    #  chef.add_recipe "redisio"
+    #  chef.add_recipe "redisio::enable"
+    #  chef.add_recipe "apache2"
+    #  chef.add_recipe "apache2::mod_php5"
+    #  chef.add_recipe "php"
+    #  chef.add_recipe "composer"
+    #  chef.add_recipe "php-redis"
+    #  chef.add_recipe "hed::test"
+    #  chef.json = {
+    #    "php" => {
+    #      "directives" => {
+    #        :display_errors => 'On',
+    #        :log_errors => 'On'
+    #      }
+    #    }
+    #  }
+
+    #config.vm.provision "shell", :path => "../../scripts/php_extensions.sh"
+
+    #end
+ 
+  end
+
+end
