@@ -8,7 +8,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.box = "ARTACK/debian-jessie"
     config.vm.hostname = "ansibleclusterfuck"
 
-    config.vm.network "forwarded_port", guest: 80, host: 8080
+    config.vm.network "forwarded_port", guest: 80, host: 8086
 
     config.vm.network "public_network"
     config.vm.synced_folder "../../shared_data", "/vagrant_data"
@@ -21,32 +21,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
          vb.customize ["modifyvm", :id, "--usbehci", "off"]
     end
 
+    # By default, Vagrant will try to automatically install Ansible if it is not yet present on the guest machine
     config.vm.provision "shell", :path => "../../scripts/ansible.sh"
-    #config.vm.provision "shell", :path => "../../scripts/python.sh"
 
-    #config.vm.provision "chef_solo" do |chef|
-    #  chef.cookbooks_path = "../../cookbooks"
-    #  chef.add_recipe "the_silver_searcher"
-    #  chef.add_recipe "redisio"
-    #  chef.add_recipe "redisio::enable"
-    #  chef.add_recipe "apache2"
-    #  chef.add_recipe "apache2::mod_php5"
-    #  chef.add_recipe "php"
-    #  chef.add_recipe "composer"
-    #  chef.add_recipe "php-redis"
-    #  chef.add_recipe "hed::test"
-    #  chef.json = {
-    #    "php" => {
-    #      "directives" => {
-    #        :display_errors => 'On',
-    #        :log_errors => 'On'
-    #      }
-    #    }
-    #  }
-
-    #config.vm.provision "shell", :path => "../../scripts/php_extensions.sh"
-
-    #end
+    # The Ansible Local provisioner requires that all the Ansible Playbook files are available on the guest machine
+    config.vm.provision "ansible_local", do |ansible|
+    end
  
   end
 
