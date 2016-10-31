@@ -11,9 +11,11 @@ Vagrantfiles for dev environments
 
 ## Available VMs
 
-| Name | Box | Provisioners |
-| --- | --- | --- |
-| mean | [ARTACK/debian-jessie](https://atlas.hashicorp.com/ARTACK/boxes/debian-jessie) | shell |
-| docker | [ARTACK/debian-jessie](https://atlas.hashicorp.com/ARTACK/boxes/debian-jessie) | shell, docker |
-| php | debian wheezy | shell, chef |
-| python | debian wheezy | shell |
+| Name | Box | Provisioners | Ports |
+| --- | --- | --- | --- |
+| ansible | [ARTACK/debian-jessie](https://atlas.hashicorp.com/ARTACK/boxes/debian-jessie) | shell, ansible-local | 80 => 8086 |
+| mean | [ARTACK/debian-jessie](https://atlas.hashicorp.com/ARTACK/boxes/debian-jessie) | shell | 80 => 8080
+| docker | [ARTACK/debian-jessie](https://atlas.hashicorp.com/ARTACK/boxes/debian-jessie) | shell, docker | 80 => 8080 |
+| php | debian wheezy | shell, chef | 80 => 8080 |
+| python | debian wheezy | shell | 80 => 8000 |
+| ruby | [ARTACK/debian-jessie](https://atlas.hashicorp.com/ARTACK/boxes/debian-jessie) | shell | 80 => 8080 |
