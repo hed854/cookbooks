@@ -22,7 +22,7 @@ fi
 # Install dotfiles
 cd ~
 if [[ ! -d "~/dotfiles" ]]; then
-  git clone https://github.com/hed854/dotfiles.git 
+  git clone https://github.com/hed854/dotfiles.git -b work
 else
   git pull dotfiles
 fi
