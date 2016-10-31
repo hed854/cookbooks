@@ -23,7 +23,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     config.vm.provision "shell", :path => "../../scripts/essentials.sh"
     config.vm.provision "shell", :path => "../../scripts/mean.sh"
-    config.vm.provision "shell", :path => "../../scripts/api.sh"
  
   end
 
