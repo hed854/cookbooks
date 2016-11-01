@@ -16,4 +16,4 @@ apt-get -q -y install mongodb-org
 npm install angular express mongoose grunt
 
 # global installs
-npm install -g nodemon bower
+npm install -g nodemon bower yarn webpack webpack-dev-server
