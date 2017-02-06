@@ -9,5 +9,5 @@ chmod +x get-pip.py
 python get-pip.py
 rm -rf get-pip.py
 
-pip install pytest pyyaml jinja2 bs4 fabric
+pip install pytest pyyaml jinja2 bs4 fabric flask
 

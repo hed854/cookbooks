@@ -15,7 +15,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vbguest.iso_path = "../VBoxGuestAdditions_5.0.20.iso"
 
     config.vm.provider "virtualbox" do |vb|
-         vb.customize ["modifyvm", :id, "--memory", "512"]
+         vb.customize ["modifyvm", :id, "--memory", "1024"]
 	 # disable usb 2.0
 	 vb.customize ["modifyvm", :id, "--usb", "off"]
          vb.customize ["modifyvm", :id, "--usbehci", "off"]
